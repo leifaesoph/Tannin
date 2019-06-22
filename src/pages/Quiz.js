@@ -242,13 +242,12 @@ class Quiz extends Component {
                   id={filteredQ.id}
                   key={filteredQ.id}
                   question={filteredQ.question}
+                  category={filteredQ.category}
+                  answers={filteredQ.falseAnswers}
                   acidity={this.state.wineData.acidity}
                   ageability={this.state.wineData.ageability}
                   alcohol={this.state.wineData.alcohol}
-                  answers={filteredQ.falseAnswers}
-
                   body={this.state.wineData.body}
-                  category={filteredQ.category}
                   color={this.state.wineData.color}
                   decant={this.state.wineData.decant}
                   pairings={this.state.wineData.pairings}

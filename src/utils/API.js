@@ -2,9 +2,7 @@ import axios from "axios";
 
 export default {
   //----------------------------------
-
   //HEROKU ROUTES
-
   // signUpSubmit: function (userInfo) {
   //   console.log(userInfo);
   //   return axios.post("https://tannin-api.herokuapp.com/api/user/signup", userInfo);

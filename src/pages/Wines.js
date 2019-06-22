@@ -232,8 +232,6 @@ handleWineAdd = id => {
                   key={wine._id}
                   id={wine._id}
                   name={wine.name}
-
-                  
                   showMe={this.state.showMe}
                   hideShow={this.hideShow}
                   handleWineAdd={this.handleWineAdd}

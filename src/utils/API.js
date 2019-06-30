@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from 'axios'
 
 export default {
   //----------------------------------
@@ -6,45 +6,45 @@ export default {
   //HEROKU ROUTES
 
   signUpSubmit: function (userInfo) {
-    console.log(userInfo);
-    return axios.post("https://tannin-api.herokuapp.com/api/user/signup", userInfo);
+    console.log(userInfo)
+    return axios.post('https://tannin-api.herokuapp.com/api/user/signup', userInfo)
   },
   logIn: function (loginInfor) {
-    console.log(loginInfor);
-    return axios.post("https://tannin-api.herokuapp.com/api/user/login", loginInfor);
+    console.log(loginInfor)
+    return axios.post('https://tannin-api.herokuapp.com/api/user/login', loginInfor)
   },
   logOut: function () {
     // console.log(userInfo);
-    return axios.post("https://tannin-api.herokuapp.com/api/user/logout");
+    return axios.post('https://tannin-api.herokuapp.com/api/user/logout')
   },
   getUser: function () {
-    return axios.get('https://tannin-api.herokuapp.com/api/user/getUser');
+    return axios.get('https://tannin-api.herokuapp.com/api/user/getUser')
   },
-    getMaster: function(q) {
-      return axios.get("https://tannin-api.herokuapp.com/api/wine/");
-    },
+  getMaster: function (q) {
+    return axios.get('https://tannin-api.herokuapp.com/api/wine/')
+  },
 
-    getSavedWine: function(admin) {
-      console.log(admin);
-      return axios.post("https://tannin-api.herokuapp.com/api/getwine/",admin);
-    },
-    addEmployee: function(employeeData) {
-      console.log(employeeData);
-      return axios.post("https://tannin-api.herokuapp.com/api/addEmployee", employeeData)
-    },
-    addWine: function(wineData) {
-      console.log(wineData);
-      return axios.put("https://tannin-api.herokuapp.com/api/addwine/", wineData);
-    },
+  getSavedWine: function (admin) {
+    console.log(admin)
+    return axios.post('https://tannin-api.herokuapp.com/api/getwine/', admin)
+  },
+  addEmployee: function (employeeData) {
+    console.log(employeeData)
+    return axios.post('https://tannin-api.herokuapp.com/api/addEmployee', employeeData)
+  },
+  addWine: function (wineData) {
+    console.log(wineData)
+    return axios.put('https://tannin-api.herokuapp.com/api/addwine/', wineData)
+  },
 
-    deleteWine: function(delelteWine) {
-      console.log(delelteWine);
-      return axios.put("https://tannin-api.herokuapp.com/api/restaurant/delete", delelteWine);
-    },
-    deleteEmployee: function(deleteEmp) {//localhost:3001/api/addEmployee/
-      console.log(deleteEmp);
-      return axios.put("https://tannin-api.herokuapp.com/api/addEmployee/", deleteEmp)
-    },
+  deleteWine: function (delelteWine) {
+    console.log(delelteWine)
+    return axios.put('https://tannin-api.herokuapp.com/api/restaurant/delete', delelteWine)
+  },
+  deleteEmployee: function (deleteEmp) {//localhost:3001/api/addEmployee/
+    console.log(deleteEmp)
+    return axios.put('https://tannin-api.herokuapp.com/api/addEmployee/', deleteEmp)
+  },
 
   // //LOCAL ROUTES
   // //------------------------------------------------------
@@ -93,7 +93,6 @@ export default {
   //   return axios.put("http://localhost:3001/api/addEmployee/", deleteEmp)
   // },
 
-
-};
+}
 
 

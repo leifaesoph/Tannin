@@ -1,17 +1,17 @@
-import React, { Component } from "react";
-import SavedWine from "../components/SavedWine";
-import API from "../utils/API";
-import Header2 from "../components/Header2";
-import Empinfo from "../components/Empinfo";
-import { Container } from "../components/Grid";
-// import questions from "../questions.json";
-// // importing the wine template for testing purposes 
-// import wineData from "../franciacorta.json"
-import ScoreSummary from "../components/Scores"
-import { List } from "../components/List";
-// import { Link } from "react-router-dom";
-import "./style.css";
+import React, { Component } from 'react'
+import SavedWine from '../components/SavedWine'
+import API from '../utils/API'
+import Header2 from '../components/Header2'
+import Empinfo from '../components/Empinfo'
+import { Container } from '../components/Grid'
+// import questions from '../questions.json'
 
+// importing the wine template for testing purposes
+// import wineData from '../franciacorta.json'
+import ScoreSummary from '../components/Scores'
+import { List } from '../components/List'
+// import { Link } from 'react-router-dom'
+import './style.css'
 
 class EmployeePage extends Component {
   state = {
@@ -22,102 +22,97 @@ class EmployeePage extends Component {
     showMe6: false,
     showMe4: false,
     showMe: false,
-    user: "",
+    user: '',
     loggedIn: true,
     redirectTo: null,
-    id: "",
-    restaurant: "",
-    firstName: "",
-    lastName: "",
-    email: "",
-    password: "",
-    loginEmail: "",
-    loginPassword: "",
+    id: '',
+    restaurant: '',
+    firstName: '',
+    lastName: '',
+    email: '',
+    password: '',
+    loginEmail: '',
+    loginPassword: '',
 
-    greet: "",
-    empUserId: "",
-    empUserFirstName: "",
-    empUserLastName: "",
-    empUserRestaurantName: "",
-    empuserEmail: "",
+    greet: '',
+    empUserId: '',
+    empUserFirstName: '',
+    empUserLastName: '',
+    empUserRestaurantName: '',
+    empuserEmail: '',
 
-    wineId: "",
-    wineName: "",
-    wineAcidity: "",
-    wineAgeability: "",
-    wineAlcohol: "",
-    wineBody: "",
-    wineCountry: "",
-    wineDecant: "",
-    wineGlassType: "",
+    wineId: '',
+    wineName: '',
+    wineAcidity: '',
+    wineAgeability: '',
+    wineAlcohol: '',
+    wineBody: '',
+    wineCountry: '',
+    wineDecant: '',
+    wineGlassType: '',
     winePairings: [],
     winePrimaryFlavors: [],
-    winePronunciation: "",
-    wineRegion: "",
-    wineSummary: "",
-    wineSweetness: "",
-    wineTannin: "",
-    wineTemp: "",
+    winePronunciation: '',
+    wineRegion: '',
+    wineSummary: '',
+    wineSweetness: '',
+    wineTannin: '',
+    wineTemp: '',
     wineVarietal: [],
 
-
-    winewiththisscore: "",
+    winewiththisscore: '',
     newScores: [],
-    scoreId: "",
-    testmessage: ""
+    scoreId: '',
+    testmessage: ''
 
-  };
+  }
 
   hideShowSummary = id => {
     const newState = { ...this.state }
     newState.empuseId = newState.user._id
     newState.newScores = newState.scoreCollection
 
-
     newState.showMeSummary = !newState.showMeSummary
-    this.setState(newState);
+    this.setState(newState)
     // console.log('HEHEHEHEHEHE')
     // console.log(newState.newScores)
-  };
+  }
 
-
-  componentDidMount() {
+  componentDidMount () {
     this.getUser()
   }
 
   getUser = () => {
 
-
     API.getUser().then(response => {
-      console.log("LOGGED IN USER: ", response)
+      console.log('LOGGED IN USER: ', response)
       if (!!response.data.user) {
-        console.log('THERE IS A USER');
-        console.log(response.data.user.scores);
+        console.log('THERE IS A USER')
+        console.log(response.data.user.scores)
         this.setState({
           loggedIn: true,
           user: response.data.user,
           scoreCollection: response.data.user.scores,
-        });
+        })
         this.getSavedWine()
-      }
-      else {
+      } else {
         this.setState({
           loggedIn: false,
           user: null
-        });
-        this.props.history.push(`/`);
+        })
+        this.props.history.push(`/`)
       }
-    });
+    })
   }
 
   getSavedWine = () => {
-    console.log("////////////////");
-    console.log(this.state.user.restaurantId);
-    console.log("////////////////");
-    console.log(this.state.user.scores);
-    console.log(this.state.wineCollections);
+    console.log('////////////////')
+    console.log(this.state.user.restaurantId)
+    console.log('////////////////')
+    console.log(this.state.user.scores)
+    console.log(this.state.wineCollections)
 
-    const admin = { restaurantId: this.state.user.restaurantId };
+    const admin = { restaurantId: this.state.user.restaurantId }
     API.getSavedWine(admin)
       .then(res => {
 
@@ -130,35 +125,35 @@ class EmployeePage extends Component {
       })
       .catch(() =>
         this.setState({
-          message: "Wine not available"
+          message: 'Wine not available'
         })
-      );
-  };
+      )
+  }
 
   handleInputChange = event => {
-    const { name, value } = event.target;
+    const { name, value } = event.target
     this.setState({
       [name]: value
 
-    });
-  };
+    })
+  }
   handleLogout = event => {
 
-    console.log('logging out');
+    console.log('logging out')
     API.logOut().then(response => {
-      console.log(response.data.msg);
+      console.log(response.data.msg)
       this.setState({
         loggedIn: false,
         user: null,
-      });
-      this.props.history.push(`/`);
-      console.log(this.state);
-    });
+      })
+      this.props.history.push(`/`)
+      console.log(this.state)
+    })
   }
 
   hideShow = id => {
     const newState = { ...this.state }
-    const wine = this.state.wineCollections.find(wine => wine._id === id);
+    const wine = this.state.wineCollections.find(wine => wine._id === id)
     newState.wineId = id
     newState.wineName = wine.name
     newState.wineAcidity = wine.acidity
@@ -179,29 +174,24 @@ class EmployeePage extends Component {
     newState.wineVarietal = wine.varietal
     newState.showMe = !newState.showMe
 
-
-    this.setState(newState);
+    this.setState(newState)
   }
-
-
 
   hideShow4 = id => {
     const newState = { ...this.state }
-    newState.greet = "Welcome!"
+    newState.greet = 'Welcome!'
     newState.empuseId = newState.user._id
     newState.empUserFirstName = newState.user.firstName
     newState.empUserLastName = newState.user.lastName
     newState.empUserRestaurantName = newState.user.restaurantName
     newState.empuseEmail = newState.user.email
-    console.log(newState.empuseId);
+    console.log(newState.empuseId)
     newState.showMe4 = !newState.showMe4
-    this.setState(newState);
+    this.setState(newState)
   }
-
 
   // showScore = winename => {
   //   const newState = { ...this.state }
-
 
   //   const score = this.state.scoreCollection.find(score => score.wine === winename);
 
@@ -223,11 +213,10 @@ class EmployeePage extends Component {
   // }
   // ----------
 
-  render() {
+  render () {
     return (
 
       <Container>
-
 
 
         <div className="emppagemainwrap">
@@ -242,9 +231,6 @@ class EmployeePage extends Component {
             handleLogout={this.handleLogout}
             greet={this.state.greet}
           ></Empinfo>
-
-
-
 
 
           {/* <Jumbotron>
@@ -296,7 +282,6 @@ class EmployeePage extends Component {
                 <div className="emppageColWrap1">
 
 
-
                   {this.state.wineCollections.length ? (
                     <List>
                       {this.state.wineCollections.map(wine => (
@@ -336,8 +321,8 @@ class EmployeePage extends Component {
                       ))}
                     </List>
                   ) : (
-                      <h2 className="text-center"> </h2>
-                    )}
+                    <h2 className="text-center"></h2>
+                  )}
                 </div>
               </div>
 
@@ -357,8 +342,8 @@ class EmployeePage extends Component {
                     ))}
                   </List>
                 ) : (
-                    <h2 className="text-center"> </h2>
-                  )}
+                  <h2 className="text-center"></h2>
+                )}
               </div>
             </div>
             {/* -----------------EMPLOYEES COLUMN------------------- */}
@@ -367,8 +352,8 @@ class EmployeePage extends Component {
           {/* <Footer /> */}
         </div>
       </Container>
-    );
+    )
   }
 }
 
-export default EmployeePage;
+export default EmployeePage

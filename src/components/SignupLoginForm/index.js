@@ -1,58 +1,58 @@
-import React from "react";
+import React from 'react'
 // import { Link } from "react-router-dom";
-import "./style.css";
+import './style.css'
 
-function SignupLoginForm({ showMe, hideShow, restaurant, firstName, lastName, email, password, loginemail, loginpassword, handleSubmitInputChange, handleSignupFormSubmit, handleLoginInputChange, handleLoginFormSubmit,signupMessage, loginMessage }) {
+function SignupLoginForm ({ showMe, hideShow, restaurant, firstName, lastName, email, password, loginemail, loginpassword, handleSubmitInputChange, handleSignupFormSubmit, handleLoginInputChange, handleLoginFormSubmit, signupMessage, loginMessage }) {
   return (
 
     <div>
-      <div className="loginsignupbtnmainwrap">
-      <div className="loginsignupbtnmainwrap2">
-      <button className="loginsignupbtnmain" onClick={() => hideShow()}>Log In/ Sign Up</button>
+      <div className='loginsignupbtnmainwrap'>
+        <div className='loginsignupbtnmainwrap2'>
+          <button className='loginsignupbtnmain' onClick={() => hideShow()}>Log In/ Sign Up</button>
+        </div>
       </div>
-      </div>
-      {showMe ?
-        <div className="overlay">
-        <div className="tannintextwrap">Tannin</div>
-          <div className="wrap1">
-            <div className="wrap2">
-              <div className="wrap3">
-                <div className="signUpwrap">
-                  <div className="signuptext"> Sign Up </div>
+      {showMe
+        ? <div className='overlay'>
+          <div className='tannintextwrap'>Tannin</div>
+          <div className='wrap1'>
+            <div className='wrap2'>
+              <div className='wrap3'>
+                <div className='signUpwrap'>
+                  <div className='signuptext'> Sign Up </div>
                   <form>
-                    <div className="form-group">
+                    <div className='form-group'>
                       <div>
                         <label>
                           <strong>Restaurant</strong>
                         </label>
                         <div>
                           <input
-                            className="form-control"
+                            className='form-control'
                             // autoComplete="off"
-                            
-                            type="text"
+
+                            type='text'
                             value={restaurant}
                             // placeholder="Restaurant"
-                            name="restaurant"
+                            name='restaurant'
                             onChange={handleSubmitInputChange}
                             required
                           />
                         </div>
                       </div>
                       <div>
-                        <br></br>
+                        <br />
                         <label>
                           <strong>First Name</strong>
                         </label>
                         <div>
                           <input
-                            className="form-control"
-                            autoComplete="off"
-                            
-                            type="text"
+                            className='form-control'
+                            autoComplete='off'
+
+                            type='text'
                             value={firstName}
                             // placeholder="First Name"
-                            name="firstName"
+                            name='firstName'
                             onChange={handleSubmitInputChange}
                             required
                           />
@@ -63,12 +63,12 @@ function SignupLoginForm({ showMe, hideShow, restaurant, firstName, lastName, em
                         </label>
                         <div>
                           <input
-                            className="form-control"
-                            
-                            type="text"
+                            className='form-control'
+
+                            type='text'
                             value={lastName}
                             // placeholder="Last Name"
-                            name="lastName"
+                            name='lastName'
                             onChange={handleSubmitInputChange}
                             required
                           />
@@ -81,12 +81,12 @@ function SignupLoginForm({ showMe, hideShow, restaurant, firstName, lastName, em
                         </label>
                         <div>
                           <input
-                            className="form-control"
-                            
-                            type="email"
+                            className='form-control'
+
+                            type='email'
                             value={email}
                             // placeholder="Email Address"
-                            name="email"
+                            name='email'
                             onChange={handleSubmitInputChange}
                             required
                           />
@@ -97,36 +97,36 @@ function SignupLoginForm({ showMe, hideShow, restaurant, firstName, lastName, em
                         </label>
                         <div>
                           <input
-                            className="form-control"
-                            
-                            type="password"
+                            className='form-control'
+
+                            type='password'
                             value={password}
                             // placeholder="Password"
-                            name="password"
+                            name='password'
                             onChange={handleSubmitInputChange}
                             required
                           />
                         </div>
                       </div>
                     </div>
-                    <div className="sigupmessage"><h2 className="message">{signupMessage}</h2></div>
-                    <div className="pull-right">
+                    <div className='sigupmessage'><h2 className='message'>{signupMessage}</h2></div>
+                    <div className='pull-right'>
 
                       <button
                         onClick={handleSignupFormSubmit}
-                        type="submit"
-                        className="submitbtnsignup"
+                        type='submit'
+                        className='submitbtnsignup'
                       >
                         Submit
-        </button>
+                      </button>
                     </div>
                   </form>
                 </div>
-                <div className="loginwrap">
-                  <br></br>
-                  <div className="logintext"> Log In</div>
+                <div className='loginwrap'>
+                  <br />
+                  <div className='logintext'> Log In</div>
                   <form>
-                    <div className="form-group">
+                    <div className='form-group'>
                       <div>
 
                         <label>
@@ -134,12 +134,12 @@ function SignupLoginForm({ showMe, hideShow, restaurant, firstName, lastName, em
                         </label>
                         <div>
                           <input
-                            className="form-control"
-                            
-                            type="email"
+                            className='form-control'
+
+                            type='email'
                             value={loginemail}
                             // placeholder="Email Address"
-                            name="loginemail"
+                            name='loginemail'
                             onChange={handleLoginInputChange}
                             required
                           />
@@ -150,34 +150,34 @@ function SignupLoginForm({ showMe, hideShow, restaurant, firstName, lastName, em
                         </label>
                         <div>
                           <input
-                            className="form-control"
-                            
-                            type="password"
+                            className='form-control'
+
+                            type='password'
                             value={loginpassword}
                             // placeholder="Password"
-                            name="loginpassword"
+                            name='loginpassword'
                             onChange={handleLoginInputChange}
                             required
                           />
                         </div>
                       </div>
                     </div>
-                    <div className="loginmessage"><h2 className="message">{loginMessage}</h2></div>
-                    <div className="pull-right">
+                    <div className='loginmessage'><h2 className='message'>{loginMessage}</h2></div>
+                    <div className='pull-right'>
 
                       <button
                         onClick={handleLoginFormSubmit}
-                        type="submit"
-                        className="loginbtnsignup"
+                        type='submit'
+                        className='loginbtnsignup'
                       >
                         Login
                       </button>
                     </div>
                   </form>
                 </div>
-                <br></br>
+                <br />
               </div>
-              <div className="btnwrap">
+              <div className='btnwrap'>
 
                 {/* <button><Link
                   className={window.location.pathname === "/admin" ? "nav-link active" : "nav-link"}
@@ -186,8 +186,7 @@ function SignupLoginForm({ showMe, hideShow, restaurant, firstName, lastName, em
                   admin
               </Link></button> */}
 
-
-<button className="backtohome" onClick={() => hideShow()}><i className="fa fa-chevron-circle-left 2x" aria-hidden="true"></i></button>
+                <button className='backtohome' onClick={() => hideShow()}><i className='fa fa-chevron-circle-left 2x' aria-hidden='true' /></button>
               </div>
             </div>
           </div>
@@ -196,7 +195,7 @@ function SignupLoginForm({ showMe, hideShow, restaurant, firstName, lastName, em
       }
 
     </div>
-  );
+  )
 }
 
-export default SignupLoginForm;
+export default SignupLoginForm

@@ -1,16 +1,16 @@
-import React, { Component } from "react";
-// import Jumbotron from "../components/Jumbotron";
-import Restowine from "../components/Restowine";
-import Employees from "../components/Employees";
-import Addemployee from "../components/Addemployee";
-// // import Footer from "../components/Footer";
-import Header from "../components/Header";
-import Userinfo from "../components/Userinfo";
-import API from "../utils/API";
-import { Container } from "../components/Grid";
-import { List } from "../components/List";
-import { Link } from "react-router-dom";
-import "./style.css";
+import React, { Component } from 'react'
+// import Jumbotron from '../components/Jumbotron'
+import Restowine from '../components/Restowine'
+import Employees from '../components/Employees'
+import Addemployee from '../components/Addemployee'
+// // import Footer from '../components/Footer'
+import Header from '../components/Header'
+import Userinfo from '../components/Userinfo'
+import API from '../utils/API'
+import { Container } from '../components/Grid'
+import { List } from '../components/List'
+import { Link } from 'react-router-dom'
+import './style.css'
 
 class Admin extends Component {
   state = {
@@ -23,61 +23,61 @@ class Admin extends Component {
     showMe2: false,
     showMe3: false,
     showMeEmp: false,
-    // text: "add wine",
-    wineId: "",
-    wineName: "",
-    wineAcidity: "",
-    wineAgeability: "",
-    wineAlcohol: "",
-    wineBody: "",
-    wineCountry: "",
-    wineDecant: "",
-    wineGlassType: "",
+    // text: 'add wine',
+    wineId: '',
+    wineName: '',
+    wineAcidity: '',
+    wineAgeability: '',
+    wineAlcohol: '',
+    wineBody: '',
+    wineCountry: '',
+    wineDecant: '',
+    wineGlassType: '',
     winePairings: [],
     winePrimaryFlavors: [],
-    winePronunciation: "",
-    wineRegion: "",
-    wineSummary: "",
-    wineSweetness: "",
-    wineTannin: "",
-    wineTemp: "",
+    winePronunciation: '',
+    wineRegion: '',
+    wineSummary: '',
+    wineSweetness: '',
+    wineTannin: '',
+    wineTemp: '',
     wineVarietal: [],
 
-    empId: "",
-    empfirstName: "",
-    emplastName: "",
+    empId: '',
+    empfirstName: '',
+    emplastName: '',
     empEmail: '"',
-    empScores:[],
+    empScores: [],
 
-    user: "",
-    // restaurantId: "",
-    name: "",
-    lastName: "",
-    email: "",
-    password: "",
-    // loginemail: "",
-    // loginpassword: "",
+    user: '',
+    // restaurantId: '',
+    name: '',
+    lastName: '',
+    email: '',
+    password: '',
+    // loginemail: '',
+    // loginpassword: '',
     loggedIn: true,
     redirectTo: null,
 
-    greet: "",
-    userId: "",
-    usefirstName: "",
-    uselastName: "",
-    useEmail: "",
-    userestaurantName: ""
-  };
+    greet: '',
+    userId: '',
+    usefirstName: '',
+    uselastName: '',
+    useEmail: '',
+    userestaurantName: ''
+  }
 
-  componentDidMount() {
+  componentDidMount () {
     this.getUser()
   }
 
   getUser = () => {
     API.getUser().then(response => {
-      console.log("LOGGED IN USER: ", response)
+      console.log('LOGGED IN USER: ', response)
       if (!!response.data.user) {
-        console.log('THERE IS A USER');
-        console.log(response.data);
+        console.log('THERE IS A USER')
+        console.log(response.data)
         this.setState({
           loggedIn: true,
           user: response.data.user,
@@ -89,35 +89,35 @@ class Admin extends Component {
         this.setState({
           loggedIn: false,
           user: null
-        });
-        this.props.history.push(`/`);
+        })
+        this.props.history.push(`/`)
       }
-    });
+    })
   }
   hideShow2 = () => {
     const newState = { ...this.state }
     newState.showMe2 = !newState.showMe2
     // newState.scale = this.state.scale > 1 ? 1 : 1.5
 
-    this.setState(newState);
+    this.setState(newState)
   }
 
   hideShow = id => {
     const newState = { ...this.state }
-    const wine = this.state.wineCollections.find(wine => wine._id === id);
+    const wine = this.state.wineCollections.find(wine => wine._id === id)
     newState.wineId = id
     newState.wineName = wine.name
     newState.wineAcidity = wine.acidity
     newState.wineAgeability = wine.ageability
     newState.wineAlcohol = wine.alcohol
     newState.wineBody = wine.body
-    newState.wineCountry = wine.country 
+    newState.wineCountry = wine.country
     newState.wineDecant = wine.decant
     newState.wineGlassType = wine.glassType
     newState.winePairings = wine.pairings
     newState.winePrimaryFlavors = wine.primaryFlavors
     newState.winePronunciation = wine.pronunciation
-    newState.wineRegion = wine.region 
+    newState.wineRegion = wine.region
     newState.wineSummary = wine.summary
     newState.wineSweetness = wine.sweetness
     newState.wineTannin = wine.tannin
@@ -126,14 +126,13 @@ class Admin extends Component {
     newState.showMe = !newState.showMe
     newState.scale = this.state.scale > 1 ? 1 : 1.5
 
-    this.setState(newState);
+    this.setState(newState)
   }
-
 
   hideShowEmp = id => {
     const newState = { ...this.state }
 
-    const emp = this.state.employeesList.find(emp => emp._id === id);
+    const emp = this.state.employeesList.find(emp => emp._id === id)
 
     newState.empId = id
     newState.empfirstName = emp.firstName
@@ -143,110 +142,113 @@ class Admin extends Component {
 
     newState.showMeEmp = !newState.showMeEmp
 
-
-    this.setState(newState);
+    this.setState(newState)
     console.log(newState.empScores)
   }
 
-
   handleInputChange = event => {
-    const { name, value } = event.target;
+    const { name, value } = event.target
     this.setState({
       [name]: value
 
-    });
-  };
+    })
+  }
   handleLogout = () => {
 
-    console.log('logging out');
+    console.log('logging out')
     API.logOut().then(response => {
-      console.log(response.data);
+      console.log(response.data)
       this.setState({
         loggedIn: false,
         user: null,
       })
-      this.props.history.push(`/`);
-    });
-  };
+      this.props.history.push(`/`)
+    })
+  }
 
   getSavedWine = () => {
-    console.log("////////////////");
-    console.log(this.state.user.restaurantId);
-    console.log("////////////////");
-    const admin = { restaurantId: this.state.user.restaurantId };
+    console.log('////////////////')
+    console.log(this.state.user.restaurantId)
+    console.log('////////////////')
+    const admin = { restaurantId: this.state.user.restaurantId }
     API.getSavedWine(admin)
       .then(res => {
-        // console.log(res.data);
-        console.log("DEDADAEDAEDAEDAEDDA");
-        console.log(res.data._id);
-        // console.log(res.data[0]);
-        console.log("SAVESTAFF");
-        console.log(res.data);
-        console.log("SAVESTAFF");
-        this.setState({
-          employeesList: res.data.Employees,
-          wineCollections: res.data.Wines,
+          // console.log(res.data);
+          console.log('DEDADAEDAEDAEDAEDDA')
+          console.log(res.data._id)
+          // console.log(res.data[0]);
+          console.log('SAVESTAFF')
+          console.log(res.data)
+          console.log('SAVESTAFF')
+          this.setState({
+            employeesList: res.data.Employees,
+            wineCollections: res.data.Wines,
 
-        })
-      }
-
+          })
+        }
       )
       .catch(() =>
         this.setState({
-          message: "Wine not available"
+          message: 'Wine not available'
         })
-      );
-  };
+      )
+  }
   handleAddEmployeeChange = event => {
     const { name, value } = event.target
     this.setState({
       [name]: value
-    });
+    })
   }
   handleAddEmpolyeeFormSubmit = event => {
-    event.preventDefault();
-    this.addEmployee();
+    event.preventDefault()
+    this.addEmployee()
     // this.hideShow2();
   }
 
   addEmployee = () => {
 
     // console.log(restaurantId)
-    const employeeData = { name: this.state.name, lastName: this.state.lastName, email: this.state.email, password: this.state.password, restaurantId: this.state.user.restaurantId, restaurantName: this.state.user.restaurantName };
-    console.log("ADDRESNAME?????");
-    console.log(employeeData);
+    const employeeData = {
+      name: this.state.name,
+      lastName: this.state.lastName,
+      email: this.state.email,
+      password: this.state.password,
+      restaurantId: this.state.user.restaurantId,
+      restaurantName: this.state.user.restaurantName
+    }
+    console.log('ADDRESNAME?????')
+    console.log(employeeData)
     API.addEmployee(employeeData).then((res) => {
-      console.log("ADD Employees");
-      console.log(res.data.employee);
-      console.log(res.data.restaurant);
-      if (res.data === "Employee already exists") {
+      console.log('ADD Employees')
+      console.log(res.data.employee)
+      console.log(res.data.restaurant)
+      if (res.data === 'Employee already exists') {
         alert(res.data)
-        this.hideShow2();
-      }
-      else {
+        this.hideShow2()
+      } else {
         // alert(JSON.stringify(res.data))
         this.state.employeesList.unshift(res.data.employee)
         this.setState({
           employeesList: this.state.employeesList
-        });
-        this.hideShow2();
+        })
+        this.hideShow2()
       }
-    });
+    })
   }
 
   handleWineDelete = id => {
-    console.log("/////");
-    console.log(id);
-    const delelteWine = { id: id, restaurantId: this.state.user.restaurantId };
-    console.log(delelteWine);
-    API.deleteWine(delelteWine).then(res => this.componentDidMount());
-  };
+    console.log('/////')
+    console.log(id)
+    const delelteWine = { id: id, restaurantId: this.state.user.restaurantId }
+    console.log(delelteWine)
+    API.deleteWine(delelteWine).then(res => this.componentDidMount())
+  }
 
   handleEmployeeDelete = id => {
-    const deleteEmp = { id: id, restaurantId: this.state.user.restaurantId };
-    console.log("??????????????");
-    console.log(deleteEmp);
-    console.log("??????????????");
+    const deleteEmp = { id: id, restaurantId: this.state.user.restaurantId }
+    console.log('??????????????')
+    console.log(deleteEmp)
+    console.log('??????????????')
     // const deleltData = {id: id, restaurantId: this.state.restaurantId}
 
     API.deleteEmployee(deleteEmp).then(res =>
@@ -255,37 +257,32 @@ class Admin extends Component {
     )
   }
 
-
   hideShow3 = id => {
     const newState = { ...this.state }
 
     if (newState.user === null) {
-      console.log("you lose");
-      newState.greet = "Hello Guest"
-    }
-    else if (newState.user.firstName) {
-      newState.greet = "Welcome"
+      console.log('you lose')
+      newState.greet = 'Hello Guest'
+    } else if (newState.user.firstName) {
+      newState.greet = 'Welcome'
       newState.useId = newState.user._id
       newState.usefirstName = newState.user.firstName
       newState.uselastName = newState.user.lastName
       newState.useEmail = newState.user.email
       newState.userestaurantName = newState.user.restaurantName
-      console.log(newState.useId);
+      console.log(newState.useId)
     }
 
     newState.showMe3 = !newState.showMe3
-    this.setState(newState);
+    this.setState(newState)
 
   }
 
-
-  render() {
-
+  render () {
 
     return (
 
       <Container>
-
 
 
         <Userinfo
@@ -293,13 +290,12 @@ class Admin extends Component {
           usefirstName={this.state.usefirstName}
           uselastName={this.state.uselastName}
           userestaurantName={this.state.userestaurantName}
-          useEmail = {this.state.useEmail}
+          useEmail={this.state.useEmail}
           showMe3={this.state.showMe3}
           hideShow3={this.hideShow3}
           handleLogout={this.handleLogout}
           greet={this.state.greet}
         ></Userinfo>
-
 
 
         {/* MODAL ----------------------- */}
@@ -324,13 +320,13 @@ class Admin extends Component {
           <div className="brandCol">
             <div className="welcomebtnwrap">
               <div>
-<div></div>
+                <div></div>
 
                 <button
                   onClick={() => this.hideShow3()}
                   className="welcomebtn"
                 ><Header
-                    user={this.state.user} />
+                  user={this.state.user}/>
                 </button>
 
               </div>
@@ -343,7 +339,8 @@ class Admin extends Component {
                 <div><Link
 
                   to="/wines"
-                ><button className="addwinebtnmain"><i className="fas fa-wine-bottle"></i>
+                >
+                  <button className="addwinebtnmain"><i className="fas fa-wine-bottle"></i>
                   </button>
 
                 </Link></div>
@@ -384,8 +381,8 @@ class Admin extends Component {
                     ))}
                   </List>
                 ) : (
-                    <h2 className="text-center">Not Available</h2>
-                  )}
+                  <h2 className="text-center">Not Available</h2>
+                )}
               </div>
             </div>
           </div>
@@ -394,7 +391,10 @@ class Admin extends Component {
             <div className="empTitleWrap">
               <div className="empTitleWrap1">
                 <div className="textadmin">Employees</div>
-                <div><button className="addempbtnmain" onClick={() => this.hideShow2()}><i className="fas fa-user-plus"></i></button></div>
+                <div>
+                  <button className="addempbtnmain" onClick={() => this.hideShow2()}><i
+                    className="fas fa-user-plus"></i></button>
+                </div>
               </div>
             </div>
 
@@ -418,20 +418,20 @@ class Admin extends Component {
                         showMeEmp={this.state.showMeEmp}
                         hideShowEmp={this.hideShowEmp}
                         handleEmployeeDelete={this.handleEmployeeDelete}
-                      // Button={() => (
-                      //   <button
-                      //     onClick={() => this.handleEmployeeDelete(employee._id)}
-                      //     className="btn btn-danger ml-2"
-                      //   >
-                      //     Delete
-                      // </button>
-                      // )}
+                        // Button={() => (
+                        //   <button
+                        //     onClick={() => this.handleEmployeeDelete(employee._id)}
+                        //     className="btn btn-danger ml-2"
+                        //   >
+                        //     Delete
+                        // </button>
+                        // )}
                       />
                     ))}
                   </List>
                 ) : (
-                    <h2 className="text-center">Add Employees</h2>
-                  )}
+                  <h2 className="text-center">Add Employees</h2>
+                )}
               </div>
             </div>
           </div>
@@ -440,8 +440,8 @@ class Admin extends Component {
         {/* 
         <Footer /> */}
       </Container>
-    );
+    )
   }
 }
 
-export default Admin;
+export default Admin

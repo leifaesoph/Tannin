@@ -12,7 +12,7 @@
 //         <div className="wrap1">
 //         <div className="wrap2">
 //         <div className="wrap3">
-        
+
 //       <div className="signUpwrap">
 //       <div> Sign Up</div>
 //     <form>
@@ -57,7 +57,7 @@
 //           required
 //         />
 //         </div>
-        
+
 // <label>
 //           <strong>Last Name</strong>
 //         </label>
@@ -179,8 +179,6 @@
 
 // <br></br>
 
-
-      
 //       </div>
 //       <div className="btnwrap">
 //       <button><Link

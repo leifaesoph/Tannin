@@ -5,7 +5,6 @@
 // import API from "../utils/API";
 // import { Container } from "../components/Grid";
 
-
 // class Login extends Component {
 //   state = {
 //     books: [],
@@ -22,21 +21,19 @@
 //     loginpassword:""
 //   };
 
-
 //   hideShow = () => {
 //     const newState = {...this.state}
-//     newState.showMe = !newState.showMe 
+//     newState.showMe = !newState.showMe
 //     newState.scale = this.state.scale > 1 ? 1 : 1.5
 
 //     this.setState(newState);
 //   }
 
-
 //   handleInputChange = event => {
 //     const { name, value } = event.target;
 //     this.setState({
 //       [name]: value
-      
+
 //     });
 //   };
 
@@ -77,7 +74,7 @@
 //   render() {
 //     return (
 //       <Container>
-        
+
 //         <Loginsignup
 //             handleInputChange={this.handleInputChange}
 //             id={this.state.id}
@@ -91,10 +88,8 @@
 // showMe={this.state.showMe}
 //       hideShow = {this.hideShow}
 //             ></Loginsignup>
-          
 
- 
-// {/*         
+// {/*
 //         <Footer /> */}
 //       </Container>
 //     );

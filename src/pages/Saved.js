@@ -40,7 +40,7 @@
 //                 <strong>(React) Google Books Search</strong>
 //               </h1>
 //               <h2 className="text-center">Search for and Save Books of Interest.</h2>
-//             </Jumbotron> 
+//             </Jumbotron>
 //           </Col>
 //         </Row>
 //         <Row>

@@ -1,6 +1,6 @@
-import React from "react";
+import React from 'react'
 // import { Link } from "react-router-dom";
-import "./style.css";
+import './style.css'
 
 function Empinfo({ showMe4, userId, hideShow4, useEmail, usefirstName, uselastName, userestaurantName, handleLogout }) {
   return (
@@ -39,6 +39,7 @@ function Empinfo({ showMe4, userId, hideShow4, useEmail, usefirstName, uselastNa
 
                 </div>
 
+<<<<<<< HEAD
 
                 <br></br>
 
@@ -46,6 +47,12 @@ function Empinfo({ showMe4, userId, hideShow4, useEmail, usefirstName, uselastNa
 
                 {/* <div><Link
             className={window.location.pathname === "/employeepage" ? "nav-link active" : "nav-link"} 
+=======
+                <br />
+
+                {/* <div><Link
+            className={window.location.pathname === "/employeepage" ? "nav-link active" : "nav-link"}
+>>>>>>> 03b7edcef4e5cb495c985cff43f4bf9e590625e3
             to="/employeepage"
           ><button>
             Employee page
@@ -59,7 +66,7 @@ function Empinfo({ showMe4, userId, hideShow4, useEmail, usefirstName, uselastNa
       }
 
     </div>
-  );
+  )
 }
 
-export default Empinfo;
+export default Empinfo

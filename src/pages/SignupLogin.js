@@ -1,23 +1,23 @@
-import React, { Component } from "react";
-import { Redirect } from 'react-router-dom';
-// import Footer from "../components/Footer";
-import SignupLoginForm from "../components/SignupLoginForm";
-import API from "../utils/API";
-import { Container } from "../components/Grid";
+import React, { Component } from 'react'
+import { Redirect } from 'react-router-dom'
+// import Footer from '../components/Footer'
+import SignupLoginForm from '../components/SignupLoginForm'
+import API from '../utils/API'
+import { Container } from '../components/Grid'
 
 class SignupLogin extends Component {
   state = {
     showMe: false,
-    restaurant: "",
-    firstName: "",
-    lastName: "",
-    email: "",
-    password: "",
-    loginemail: "",
-    loginpassword: "",
+    restaurant: '',
+    firstName: '',
+    lastName: '',
+    email: '',
+    password: '',
+    loginemail: '',
+    loginpassword: '',
     loggedIn: false,
-    loginMessage:"",
-    signupMessage:"",
+    loginMessage: '',
+    signupMessage: '',
     redirectTo: null
   }
 
@@ -25,20 +25,20 @@ class SignupLogin extends Component {
     const newState = { ...this.state }
     newState.showMe = !newState.showMe
     newState.scale = this.state.scale > 1 ? 1 : 1.5
-    this.setState(newState);
+    this.setState(newState)
   }
 
   handleSubmitInputChange = event => {
-    const { name, value } = event.target;
+    const { name, value } = event.target
     this.setState({
       [name]: value
 
-    });
+    })
   }
 
   handleSignupFormSubmit = async event => {
-    event.preventDefault();
-    const { restaurant, firstName, lastName, email, password } = this.state;
+    event.preventDefault()
+    const { restaurant, firstName, lastName, email, password } = this.state
     if (firstName && lastName && restaurant && email && password) {
       const userInfo = { firstName, lastName, restaurant, email, password }
       const loginInfor = { email, password }
@@ -47,29 +47,27 @@ class SignupLogin extends Component {
         if (!response.data.error) {
           console.log('youre good')
           API.logIn(loginInfor).then(response => {
-            console.log("USER OBJ: ", response);
+            console.log('USER OBJ: ', response)
             if (response.status === 200) {
               if (response.data.isAdmin) {
                 this.setState({
                   redirectTo: '/admin'
-                });
-              }
-              else {
+                })
+              } else {
                 this.setState({
-                  redirectTo: "/employeepage"
-                });
+                  redirectTo: '/employeepage'
+                })
               }
             }
           }).catch(err => {
             console.log(err)
-          });
+          })
 
-        }
-        else {
+        } else {
           this.setState({
             redirectTo: null,
             loggedIn: false,
-            signupMessage: "Email already exist, please log in"
+            signupMessage: 'Email already exist, please log in'
           })
           console.log(response.data.error)
         }
@@ -78,18 +76,18 @@ class SignupLogin extends Component {
   }
 
   handleLoginInputChange = event => {
-    const { name, value } = event.target;
+    const { name, value } = event.target
     this.setState({
       [name]: value
 
-    });
+    })
   }
 
   handleLoginFormSubmit = event => {
-    event.preventDefault();
+    event.preventDefault()
     const loginInfor = { email: this.state.loginemail, password: this.state.loginpassword }
     API.logIn(loginInfor).then(response => {
-      console.log("USER OBJ: ", response);
+      console.log('USER OBJ: ', response)
       if (response.status === 200) {
         // update the state
         if (response.data.isAdmin) {
@@ -97,36 +95,34 @@ class SignupLogin extends Component {
             // loggedIn: true,
             // user: response.data.user,
             redirectTo: '/admin'
-          });
-        }
-        else {
+          })
+        } else {
           this.setState({
-            redirectTo: "/employeepage"
-          });
+            redirectTo: '/employeepage'
+          })
         }
-      }
-      else {
-       
-      this.setState({
-        loginMessage: "Email does not exist!"
-      })
+      } else {
+
+        this.setState({
+          loginMessage: 'Email does not exist!'
+        })
       }
     }).catch(err => {
-      console.log(err);
+      console.log(err)
       this.setState({
-        loginMessage: "Email does not exist!"
+        loginMessage: 'Email does not exist!'
       })
 
-    });
+    })
   }
 
-  render() {
+  render () {
     if (this.state.redirectTo) {
-      return <Redirect to={{ pathname: this.state.redirectTo }} />
+      return <Redirect to={{ pathname: this.state.redirectTo }}/>
     }
     return (
       <Container>
-                <div className="tannintextwrap2">Tannin</div>
+        <div className="tannintextwrap2">Tannin</div>
         <SignupLoginForm
           handleSubmitInputChange={this.handleSubmitInputChange}
           handleSignupFormSubmit={this.handleSignupFormSubmit}
@@ -147,8 +143,8 @@ class SignupLogin extends Component {
         />
         {/* <Footer /> */}
       </Container>
-    );
+    )
   }
 }
 
-export default SignupLogin;
+export default SignupLogin

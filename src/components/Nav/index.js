@@ -7,34 +7,34 @@ class Nav extends Component {
   state = {
     open: false,
     width: window.innerWidth
-  };
+  }
 
   updateWidth = () => {
-    const newState = { width: window.innerWidth };
+    const newState = { width: window.innerWidth }
 
     if (this.state.open && newState.width > 991) {
-      newState.open = false;
+      newState.open = false
     }
 
-    this.setState(newState);
-  };
+    this.setState(newState)
+  }
 
   toggleNav = () => {
-    this.setState({ open: !this.state.open });
-  };
-
-  componentDidMount() {
-    window.addEventListener("resize", this.updateWidth);
+    this.setState({ open: !this.state.open })
   }
 
-  componentWillUnmount() {
-    window.removeEventListener("resize", this.updateWidth);
+  componentDidMount () {
+    window.addEventListener('resize', this.updateWidth)
   }
 
-  render() {
+  componentWillUnmount () {
+    window.removeEventListener('resize', this.updateWidth)
+  }
+
+  render () {
     return (
       <nav className="navbar navbar-expand-lg navbar-light bg-light mb-2">
-     
+
         {/* <button
           onClick={this.toggleNav}
           className="navbar-toggler"
@@ -92,8 +92,8 @@ class Nav extends Component {
 
         </div>
       </nav>
-    );
+    )
   }
 }
 
-export default Nav;
+export default Nav

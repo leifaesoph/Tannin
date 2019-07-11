@@ -1,9 +1,7 @@
-import axios from "axios";
+import axios from 'axios'
 
-export default {
-  //----------------------------------
-
-  //HEROKU ROUTES
+const mongoDBUrl = 'http://localhost:3001'
+// const mongoDBUrl = 'https://tannin-wine.herokuapp.com/'
 
   // signUpSubmit: function (userInfo) {
   //   console.log(userInfo);

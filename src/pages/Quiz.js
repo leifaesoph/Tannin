@@ -1,16 +1,20 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
+
 // importing components
-// import EmployeePage from "./pages/EmployeePage";
-import API from "../utils/API";
-import QuestionCard from "../components/QuestionCard";
-import Wrapper from "../components/Wrapper";
+// import EmployeePage from './pages/EmployeePage'
+import API from '../utils/API'
+import QuestionCard from '../components/QuestionCard'
+import Wrapper from '../components/Wrapper'
+
 // importing the question array from the json file
-import questions from "../questions.json";
+import questions from '../questions.json'
+
 // importing the wine template for testing purposes 
 // import wineData from "../franciacorta.json"
-import { Link } from "react-router-dom";
+
 //importing css stylings
-import './style.css';
+import './style.css'
 
 class Quiz extends Component {
 
@@ -19,11 +23,11 @@ class Quiz extends Component {
     questions,
     filteredQs: [],
     correctFlavors: [],
-    submittedFlavor: "",
+    submittedFlavor: '',
     correctPairings: [],
-    submittedPairing: "",
+    submittedPairing: '',
     correctVarietal: [],
-    submittedVarietal: "",
+    submittedVarietal: '',
     counter: 0,
     score: 0,
     highScore: 0,
@@ -31,8 +35,8 @@ class Quiz extends Component {
   }
 
   // componentWillMount shuffles the CharacterCards before the DOM is loaded
-  componentWillMount() {
-    this.getUser();
+  componentWillMount () {
+    this.getUser()
   }
 
   getUser = () => {
@@ -45,159 +49,158 @@ class Quiz extends Component {
         this.setState({
           loggedIn: true,
           user: response.data.user,
-        });
-        this.getSavedWine();
-      }
-      else {
+        })
+        this.getSavedWine()
+      } else {
         this.setState({
           loggedIn: false,
           user: null
-        });
-        this.props.history.push(`/`);
+        })
+        this.props.history.push(`/`)
       }
-    });
+    })
   }
 
   getSavedWine = () => {
     // console.log("////////////////");
     // console.log(this.state.user.restaurantId);
     // console.log("////////////////");
-    const admin = { restaurantId: this.state.user.restaurantId };
+    const admin = { restaurantId: this.state.user.restaurantId }
     API.getSavedWine(admin)
       .then(res => {
-        this.setState({
-          wineCollections: res.data.Wines,
-        })
-        this.getClickedWine()
-      }
+          this.setState({
+            wineCollections: res.data.Wines,
+          })
+          this.getClickedWine()
+        }
       )
       .catch(() =>
         this.setState({
-          message: "Wine not available"
+          message: 'Wine not available'
         })
-      );
+      )
   }
 
   getClickedWine = () => {
     const id = this.props.location.state.wineId
-    const wine = this.state.wineCollections.find(wine => wine._id === id);
+    const wine = this.state.wineCollections.find(wine => wine._id === id)
     // console.log(wine);
     this.setState({
       wineData: wine,
       correctFlavors: wine.primaryFlavors,
       correctPairings: wine.pairings,
       correctVarietal: wine.varietal
-    });
+    })
 
-    const categories = Object.keys(this.state.wineData);
+    const categories = Object.keys(this.state.wineData)
 
     const filteredQs = questions.filter(q => {
       return categories.includes(q.category)
-    });
-    this.shuffle(filteredQs);
-    this.setState({ filteredQs: filteredQs });
-    console.log("????????????????");
-    console.log(filteredQs);
+    })
+    this.shuffle(filteredQs)
+    this.setState({ filteredQs: filteredQs })
+    console.log('????????????????')
+    console.log(filteredQs)
   }
 
   // Here we use the Fisher-Yates alogrithm to randomize the characters array
-  shuffle(arr) {
-    var j, x, i;
+  shuffle (arr) {
+    var j, x, i
     for (i = arr.length - 1; i > 0; i--) {
-      j = Math.floor(Math.random() * (i + 1));
-      x = arr[i];
-      arr[i] = arr[j];
-      arr[j] = x;
+      j = Math.floor(Math.random() * (i + 1))
+      x = arr[i]
+      arr[i] = arr[j]
+      arr[j] = x
     }
-    return arr;
+    return arr
   };
 
   // Checks the value of a multiple choice button and adds that to the user's counter
   handleBtnPoint = (event) => {
-    let points = parseInt(event.target.value);
+    let points = parseInt(event.target.value)
     this.setState({
       counter: this.state.counter + points,
-    });
+    })
   }
 
   handleInputChange = event => {
     // Getting the value and name of the input which triggered the change
-    const { name, value } = event.target;
+    const { name, value } = event.target
 
     // Updating the input's state
     this.setState({
       [name]: value
-    });
-  };
+    })
+  }
 
   // Checks the primary flavor against possible correct answers and add 1 point if a match
   handleCheckFlavor = () => {
 
-    const newState = { ...this.state };
+    const newState = { ...this.state }
 
     if (this.state.correctFlavors.includes(this.state.submittedFlavor)) {
       this.setState({
         counter: newState.counter + 1,
-        submittedFlavor: "",
+        submittedFlavor: '',
       })
     } else {
       this.setState({
-        submittedFlavor: "",
+        submittedFlavor: '',
       })
     }
-    
+
   }
 
   // Check the input pairing against possible correct answers and add 1 point if a match
   handleCheckPairing = () => {
 
-    const newState = { ...this.state };
+    const newState = { ...this.state }
 
     if (this.state.correctPairings.includes(this.state.submittedPairing)) {
       this.setState({
         counter: newState.counter + 1,
-        submittedPairing: "",
+        submittedPairing: '',
       })
     } else {
       this.setState({
-        submittedPairing: "",
+        submittedPairing: '',
       })
     }
-    
+
   }
 
   // Check the input varietal against possible correct answers and add 1 point if a match
   handleCheckVarietal = () => {
 
-    const newState = { ...this.state };
+    const newState = { ...this.state }
 
     if (this.state.correctVarietal.includes(this.state.submittedVarietal)) {
       this.setState({
         counter: newState.counter + 1,
-        submittedVarietal: "",
+        submittedVarietal: '',
       })
     } else {
       this.setState({
-        submittedVarietal: "",
+        submittedVarietal: '',
       })
     }
-    
+
   }
 
   handleScoreCalc = () => {
-    let hundreds = this.state.counter * 100;
-    let total = this.state.filteredQs.length;
+    let hundreds = this.state.counter * 100
+    let total = this.state.filteredQs.length
     // let totalScore = hundreds / total;
-    this.state.score = hundreds / total;
+    this.state.score = hundreds / total
     // this.setState({
     //   score: this.state.score + totalScore
     // });
 
-    this.addScore() 
+    this.addScore()
   }
 
   handleQuizPageBtn = id => {
-    const getQuiz = { id: id, restaurantId: this.state.user.restaurantId };
+    const getQuiz = { id: id, restaurantId: this.state.user.restaurantId }
 
     API.getQuiz(getQuiz).then(res =>
 
@@ -207,17 +210,17 @@ class Quiz extends Component {
 
   addScore = () => {
     const scoreData = { userId: this.state.user._id, wine: this.state.wineData.name, score: this.state.score }
-    console.log(scoreData);
+    console.log(scoreData)
     API.addScore(scoreData).then(res => {
-      console.log("ADDSCORE");
-      console.log(res);
-      console.log(res.data.scores);
-      this.props.history.push('/employeepage');
+      console.log('ADDSCORE')
+      console.log(res)
+      console.log(res.data.scores)
+      this.props.history.push('/employeepage')
     })
   }
 
   // renders react elements into the DOM
-  render() {
+  render () {
     return (
       // the parent div into which our components will be rendered
       <div className="background">
@@ -270,14 +273,16 @@ class Quiz extends Component {
           <div className="submitanswersbtnquiz">
             <button className="submitFinal" onClick={this.handleScoreCalc}>Submit Answers</button>
 
-            <Link onClick={window.location.reload} to="/employeepage"><button className="closebtnquiz">maybe next time
-            </button></Link>
+            <Link onClick={window.location.reload} to="/employeepage">
+              <button className="closebtnquiz">maybe next time
+              </button>
+            </Link>
           </div>
         </div>
 
       </div>
-    );
+    )
   }
 }
 
-export default Quiz;
+export default Quiz

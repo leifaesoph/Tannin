@@ -1,6 +1,6 @@
-import React from "react";
+import React from 'react'
 // import { Link } from "react-router-dom";
-import "./style.css";
+import './style.css'
 
 function Empinfo({ showMe4, userId, hideShow4, useEmail, usefirstName, uselastName, userestaurantName, handleLogout }) {
   return (
@@ -59,7 +59,7 @@ function Empinfo({ showMe4, userId, hideShow4, useEmail, usefirstName, uselastNa
       }
 
     </div>
-  );
+  )
 }
 
-export default Empinfo;
+export default Empinfo

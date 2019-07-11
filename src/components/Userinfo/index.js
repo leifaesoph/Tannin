@@ -1,8 +1,8 @@
-import React from "react";
+import React from 'react'
 // import { Link } from "react-router-dom";
-import "./style.css";
+import './style.css'
 
-function Userinfo({ showMe3, useEmail, useId, hideShow3, usefirstName, uselastName, userestaurantName, handleLogout }) {
+function Userinfo ({ showMe3, useEmail, useId, hideShow3, usefirstName, uselastName, userestaurantName, handleLogout }) {
   return (
 
     <div>
@@ -65,7 +65,7 @@ function Userinfo({ showMe3, useEmail, useId, hideShow3, usefirstName, uselastNa
       }
 
     </div>
-  );
+  )
 }
 
-export default Userinfo;
+export default Userinfo

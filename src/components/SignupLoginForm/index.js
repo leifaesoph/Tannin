@@ -29,8 +29,8 @@ function SignupLoginForm ({ showMe, hideShow, restaurant, firstName, lastName, e
                           <input
                             className='form-control'
                             // autoComplete="off"
-
-                            type='text'
+                            id=""
+                            type="text"
                             value={restaurant}
                             // placeholder="Restaurant"
                             name='restaurant'
@@ -46,10 +46,10 @@ function SignupLoginForm ({ showMe, hideShow, restaurant, firstName, lastName, e
                         </label>
                         <div>
                           <input
-                            className='form-control'
-                            autoComplete='off'
-
-                            type='text'
+                            className="form-control"
+                            autoComplete="off"
+                            id=""
+                            type="text"
                             value={firstName}
                             // placeholder="First Name"
                             name='firstName'
@@ -63,9 +63,9 @@ function SignupLoginForm ({ showMe, hideShow, restaurant, firstName, lastName, e
                         </label>
                         <div>
                           <input
-                            className='form-control'
-
-                            type='text'
+                            className="form-control"
+                            id=""
+                            type="text"
                             value={lastName}
                             // placeholder="Last Name"
                             name='lastName'
@@ -81,9 +81,9 @@ function SignupLoginForm ({ showMe, hideShow, restaurant, firstName, lastName, e
                         </label>
                         <div>
                           <input
-                            className='form-control'
-
-                            type='email'
+                            className="form-control"
+                            id=""
+                            type="email"
                             value={email}
                             // placeholder="Email Address"
                             name='email'
@@ -97,9 +97,9 @@ function SignupLoginForm ({ showMe, hideShow, restaurant, firstName, lastName, e
                         </label>
                         <div>
                           <input
-                            className='form-control'
-
-                            type='password'
+                            className="form-control"
+                            id=""
+                            type="password"
                             value={password}
                             // placeholder="Password"
                             name='password'
@@ -134,9 +134,9 @@ function SignupLoginForm ({ showMe, hideShow, restaurant, firstName, lastName, e
                         </label>
                         <div>
                           <input
-                            className='form-control'
-
-                            type='email'
+                            className="form-control"
+                            id=""
+                            type="email"
                             value={loginemail}
                             // placeholder="Email Address"
                             name='loginemail'
@@ -150,9 +150,9 @@ function SignupLoginForm ({ showMe, hideShow, restaurant, firstName, lastName, e
                         </label>
                         <div>
                           <input
-                            className='form-control'
-
-                            type='password'
+                            className="form-control"
+                            id=""
+                            type="password"
                             value={loginpassword}
                             // placeholder="Password"
                             name='loginpassword'

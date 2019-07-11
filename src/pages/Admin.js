@@ -1,3 +1,18 @@
+<<<<<<< HEAD
+import React, { Component } from "react";
+// import Jumbotron from "../components/Jumbotron";
+import Restowine from "../components/Restowine";
+import Employees from "../components/Employees";
+import Addemployee from "../components/Addemployee";
+// // import Footer from "../components/Footer";
+import Navbar from "../components/Navbar"
+import Userinfo from "../components/Userinfo";
+import API from "../utils/API";
+import { Container } from "../components/Grid";
+import { List } from "../components/List";
+import { Link } from "react-router-dom";
+import "./style.css";
+=======
 import React, { Component } from 'react'
 // import Jumbotron from '../components/Jumbotron'
 import Restowine from '../components/Restowine'
@@ -11,6 +26,7 @@ import { Container } from '../components/Grid'
 import { List } from '../components/List'
 import { Link } from 'react-router-dom'
 import './style.css'
+>>>>>>> 03b7edcef4e5cb495c985cff43f4bf9e590625e3
 
 class Admin extends Component {
   state = {
@@ -49,6 +65,17 @@ class Admin extends Component {
     empEmail: '"',
     empScores: [],
 
+<<<<<<< HEAD
+    user: "",
+    // restaurantId: "",
+    name: "",
+    lastName: "",
+    email: "",
+    password: "",
+    isAdmin: "",
+    // loginemail: "",
+    // loginpassword: "",
+=======
     user: '',
     // restaurantId: '',
     name: '',
@@ -57,6 +84,7 @@ class Admin extends Component {
     password: '',
     // loginemail: '',
     // loginpassword: '',
+>>>>>>> 03b7edcef4e5cb495c985cff43f4bf9e590625e3
     loggedIn: true,
     redirectTo: null,
 
@@ -70,11 +98,17 @@ class Admin extends Component {
 
   componentDidMount () {
     this.getUser()
+    console.log("Here is our User:", this.state.user)
+    console.log(this.state.user.isAdmin)
   }
 
   getUser = () => {
     API.getUser().then(response => {
+<<<<<<< HEAD
+      console.log("LOGGED IN USER: ", response.data.user)
+=======
       console.log('LOGGED IN USER: ', response)
+>>>>>>> 03b7edcef4e5cb495c985cff43f4bf9e590625e3
       if (!!response.data.user) {
         console.log('THERE IS A USER')
         console.log(response.data)
@@ -157,14 +191,25 @@ class Admin extends Component {
 
     console.log('logging out')
     API.logOut().then(response => {
+<<<<<<< HEAD
+      console.log(response.data);
+      this.props.history.push(`/`);
+=======
       console.log(response.data)
+>>>>>>> 03b7edcef4e5cb495c985cff43f4bf9e590625e3
       this.setState({
         loggedIn: false,
         user: null,
       })
+<<<<<<< HEAD
+      // this.props.history.push(`/`);
+    });
+  };
+=======
       this.props.history.push(`/`)
     })
   }
+>>>>>>> 03b7edcef4e5cb495c985cff43f4bf9e590625e3
 
   getSavedWine = () => {
     console.log('////////////////')
@@ -278,13 +323,20 @@ class Admin extends Component {
 
   }
 
+<<<<<<< HEAD
+
+  render() {
+=======
   render () {
+>>>>>>> 03b7edcef4e5cb495c985cff43f4bf9e590625e3
 
     return (
-
       <Container>
 
+<<<<<<< HEAD
+=======
 
+>>>>>>> 03b7edcef4e5cb495c985cff43f4bf9e590625e3
         <Userinfo
           useId={this.state.useId}
           usefirstName={this.state.usefirstName}
@@ -316,6 +368,25 @@ class Admin extends Component {
 
         {/* MODAL ----------------------- */}
 
+<<<<<<< HEAD
+        <div className="navBar">
+
+          <Navbar
+            userId={this.state.user._id}
+            userFirstName={this.state.user.firstName}
+            userLastName={this.state.user.lastName}
+            userAdmin={this.state.user.isAdmin}
+            restaurantName={this.state.user.restaurantName}
+            handleLogout={this.handleLogout}
+            hideShow4={this.hideShow3}
+          >
+
+          </Navbar>
+          {/* <div className="welcomebtnwrap">  */}
+          {/* <div>
+            <div>
+              {this.state.restaurant}
+=======
         <div className="wineandemployeewrapper">
           <div className="brandCol">
             <div className="welcomebtnwrap">
@@ -330,8 +401,20 @@ class Admin extends Component {
                 </button>
 
               </div>
+>>>>>>> 03b7edcef4e5cb495c985cff43f4bf9e590625e3
             </div>
-          </div>
+
+            <button
+              onClick={() => this.hideShow3()}
+              className="welcomebtn"
+            ><Header
+                user={this.state.user} />
+            </button>
+
+          </div>  */}
+          {/* </div> */}
+        </div>
+        <div className="wineandemployeewrapper">
           <div className="wineCol">
             <div className="wineTitleWrap">
               <div className="wineTitleWrap1">

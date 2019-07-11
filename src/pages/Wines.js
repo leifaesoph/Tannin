@@ -1,3 +1,17 @@
+<<<<<<< HEAD
+import React, { Component } from "react";
+import Jumbotron from "../components/Jumbotron";
+import Card from "../components/Card";
+// import Form from "../components/Form";
+import Wine from "../components/Wine";
+// import Footer from "../components/Footer";
+// import Infowine from "../components/Infowine";
+import { Link } from "react-router-dom";
+import API from "../utils/API";
+import { Container } from "../components/Grid";
+import { List } from "../components/List";
+
+=======
 import React, { Component } from 'react'
 // import Jumbotron from '../components/Jumbotron'
 import Card from '../components/Card'
@@ -9,6 +23,7 @@ import { Link } from 'react-router-dom'
 import API from '../utils/API'
 import { Container } from '../components/Grid'
 import { List } from '../components/List'
+>>>>>>> 03b7edcef4e5cb495c985cff43f4bf9e590625e3
 
 class Wines extends Component {
   state = {
@@ -160,6 +175,53 @@ class Wines extends Component {
 
     return (
       <Container>
+<<<<<<< HEAD
+<div className="allwrap">
+<div className="mainWrapper1">
+<div className="mainWrapper2">
+<div className="mainWrapper3">
+
+        <div className="winesnav">
+        <div>
+          {/* <Link className="navbar-brand" to="/">
+            Wine academy
+        </Link> */}
+        </div>
+       
+        </div>
+<br></br>
+        <Jumbotron>
+<div className="texttanninwrap">
+        <h1 className="texttannin">
+            <strong>Tannin</strong>
+          </h1>
+          </div>
+          <br></br>
+          <div className="textwinecolwrap">
+          <h1 className="textwinecol">
+            <strong>Wine Collections</strong>
+          </h1>
+</div>
+<div className="textwinecolwrap">
+          <h2 className="text-center">Add Wine to your Restaurant.</h2>
+          </div>
+        </Jumbotron>
+
+        <div className="btnadminpagewrap">
+          <Link
+            className={window.location.pathname === "/admin" ? "nav-link active" : "nav-link"}
+            to="/admin"
+          ><button className="btnadminpage"><i className="fas fa-wine-glass-alt">   <span>Your Restaurant</span></i>
+              
+            </button>
+              </Link>
+        </div>
+
+        </div>
+        </div>
+        </div>
+        {/* <Card title="Wine Search">
+=======
         <div className="allwrap">
 
           <br></br>
@@ -195,6 +257,7 @@ class Wines extends Component {
 
 
           {/* <Card title="Wine Search">
+>>>>>>> 03b7edcef4e5cb495c985cff43f4bf9e590625e3
 
               <Form
                 handleInputChange={this.handleInputChange}

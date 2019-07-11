@@ -1,6 +1,7 @@
-import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
-import './style.css'
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
+import Empinfo from "../Empinfo";
+import "./style.css";
 
 class Nav extends Component {
   state = {
@@ -46,11 +47,18 @@ class Nav extends Component {
           <span className="navbar-toggler-icon" />
         </button> */}
 
-        <div className={`${this.state.open ? '' : 'collapse '}navbar-collapse`} id="navbarNav">
-
-          <ul className="navbar-nav">
-
-            {/* <li className="nav-item">
+        <div className={`${this.state.open ? "" : "collapse "}navbar-collapse`} id="navbarNav">
+        <Empinfo
+            useId={this.state.useId}
+            useEmail={this.state.empuseEmail}
+            usefirstName={this.state.empUserFirstName}
+            uselastName={this.state.empUserLastName}
+            userestaurantName={this.state.empUserRestaurantName}
+            showMe4={this.state.showMe4}
+            hideShow4={this.hideShow4}
+            handleLogout={this.handleLogout}
+            greet={this.state.greet}
+          ></Empinfo>
              <button><Link
                 onClick={this.toggleNav}
                 className={window.location.pathname === "/home" ? "nav-link active" : "nav-link"}
@@ -58,9 +66,6 @@ class Nav extends Component {
               >
                 Home
               </Link></button>
-            </li> */}
-
-            {/* <li className="nav-item">
               <Link
                 onClick={this.toggleNav}
                 className={window.location.pathname === "/" ? "nav-link active" : "nav-link"}
@@ -68,10 +73,6 @@ class Nav extends Component {
               >
                 Search
               </Link>
-
-            </li> */}
-
-            {/* <li className="nav-item">
               <Link
                 onClick={this.toggleNav}
                 className={window.location.pathname === "/saved" ? "nav-link active" : "nav-link"}
@@ -79,10 +80,6 @@ class Nav extends Component {
               >
                 Saved
               </Link>
-            </li> */}
-
-
-            {/* <li className="nav-item">
               <Link
                 onClick={this.toggleNav}
                 className={window.location.pathname === "/" ? "nav-link active" : "nav-link"}
@@ -91,9 +88,6 @@ class Nav extends Component {
                 Back to login page
               </Link>
               
-            </li> */}
-
-          </ul>
 
 
         </div>

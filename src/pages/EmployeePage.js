@@ -1,3 +1,18 @@
+<<<<<<< HEAD
+import React, { Component } from "react";
+import SavedWine from "../components/SavedWine";
+import API from "../utils/API";
+import Navbar from "../components/Navbar"
+import Header2 from "../components/Header2";
+import Empinfo from "../components/Empinfo";
+import { Container } from "../components/Grid";
+// importing the wine template for testing purposes 
+import ScoreSummary from "../components/Scores"
+import { List } from "../components/List";
+// import { Link } from "react-router-dom";
+import "./style.css";
+
+=======
 import React, { Component } from 'react'
 import SavedWine from '../components/SavedWine'
 import API from '../utils/API'
@@ -12,6 +27,7 @@ import ScoreSummary from '../components/Scores'
 import { List } from '../components/List'
 // import { Link } from 'react-router-dom'
 import './style.css'
+>>>>>>> 03b7edcef4e5cb495c985cff43f4bf9e590625e3
 
 class EmployeePage extends Component {
   state = {
@@ -76,11 +92,15 @@ class EmployeePage extends Component {
     this.setState(newState)
     // console.log('HEHEHEHEHEHE')
     // console.log(newState.newScores)
+<<<<<<< HEAD
+  };
+=======
   }
 
   componentDidMount () {
     this.getUser()
   }
+>>>>>>> 03b7edcef4e5cb495c985cff43f4bf9e590625e3
 
   getUser = () => {
 
@@ -103,6 +123,10 @@ class EmployeePage extends Component {
         this.props.history.push(`/`)
       }
     })
+  }
+
+  componentDidMount() {
+    this.getUser()
   }
 
   getSavedWine = () => {
@@ -141,6 +165,17 @@ class EmployeePage extends Component {
 
     console.log('logging out')
     API.logOut().then(response => {
+<<<<<<< HEAD
+      this.props.history.push(`/`);
+      console.log(response.data.msg);
+      this.setState({
+        loggedIn: false,
+        user: null,
+      });
+      // this.props.history.push(`/`);
+      console.log(this.state);
+    });
+=======
       console.log(response.data.msg)
       this.setState({
         loggedIn: false,
@@ -149,6 +184,7 @@ class EmployeePage extends Component {
       this.props.history.push(`/`)
       console.log(this.state)
     })
+>>>>>>> 03b7edcef4e5cb495c985cff43f4bf9e590625e3
   }
 
   hideShow = id => {
@@ -190,6 +226,9 @@ class EmployeePage extends Component {
     this.setState(newState)
   }
 
+<<<<<<< HEAD
+  render() {
+=======
   // showScore = winename => {
   //   const newState = { ...this.state }
 
@@ -214,14 +253,27 @@ class EmployeePage extends Component {
   // ----------
 
   render () {
+>>>>>>> 03b7edcef4e5cb495c985cff43f4bf9e590625e3
     return (
 
       <Container>
+        <div className="doesThisHelp">
+        <Navbar
+        userId={this.state.user._id}
+                   userFirstName={this.state.user.firstName}
+                    userLastName={this.state.user.lastName}
+                    userAdmin={this.state.user.isAdmin}
+                    restaurantName={this.state.user.restaurantName}
+                    handleLogout={this.handleLogout}
+                    hideShow4={this.hideShow4}
+        ></Navbar>
+        </div>
 
 
         <div className="emppagemainwrap">
           <Empinfo
-            useId={this.state.useId}
+          user={this.state.user}
+            userId={this.state.useId}
             useEmail={this.state.empuseEmail}
             usefirstName={this.state.empUserFirstName}
             uselastName={this.state.empUserLastName}
@@ -242,7 +294,8 @@ class EmployeePage extends Component {
 
 
           <div className="employeepagewrapper">
-
+            <div className="navTest">
+            </div>
             <div className="emppagecol">
               <div className="empwelcomebtnwrap">
                 <button

@@ -82,6 +82,7 @@ function SavedWine({ name, id, hideShow, showMe, wineName, wineTemp, wineTannin,
                               <div>
                                 <ul className="travelcompany-input">
                                   <span className="input-label">{pairing}</span>
+
                                 </ul>
                               </div>
 
@@ -95,10 +96,9 @@ function SavedWine({ name, id, hideShow, showMe, wineName, wineTemp, wineTannin,
 
                         </div>
 
-
+                        <br></br>
 
                       </div>
-                      <br></br>
                       <div className="btnwrap">
                         <button className="btnwrap1buserclose" onClick={() => hideShow(id)}><i className="fas fa-times-circle"></i></button>
                       </div>

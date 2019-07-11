@@ -9,11 +9,7 @@ const Header = props => {
 		Greeting = (
 <div>
 			<div>
-				<strong>{props.user.restaurantName}</strong>
-			</div>
-			<br></br>
-			<div>
-				Hello <strong>{props.user.firstName}</strong>
+				<strong>{props.user.restaurantName} | Hello {props.user.firstName}</strong>
 			</div>
 			</div>
 		)

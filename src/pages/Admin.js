@@ -4,7 +4,7 @@ import Restowine from "../components/Restowine";
 import Employees from "../components/Employees";
 import Addemployee from "../components/Addemployee";
 // // import Footer from "../components/Footer";
-import Header from "../components/Header";
+import Navbar from "../components/Navbar"
 import Userinfo from "../components/Userinfo";
 import API from "../utils/API";
 import { Container } from "../components/Grid";
@@ -47,7 +47,7 @@ class Admin extends Component {
     empfirstName: "",
     emplastName: "",
     empEmail: '"',
-    empScores:[],
+    empScores: [],
 
     user: "",
     // restaurantId: "",
@@ -55,6 +55,7 @@ class Admin extends Component {
     lastName: "",
     email: "",
     password: "",
+    isAdmin: "",
     // loginemail: "",
     // loginpassword: "",
     loggedIn: true,
@@ -70,11 +71,13 @@ class Admin extends Component {
 
   componentDidMount() {
     this.getUser()
+    console.log("Here is our User:", this.state.user)
+    console.log(this.state.user.isAdmin)
   }
 
   getUser = () => {
     API.getUser().then(response => {
-      console.log("LOGGED IN USER: ", response)
+      console.log("LOGGED IN USER: ", response.data.user)
       if (!!response.data.user) {
         console.log('THERE IS A USER');
         console.log(response.data);
@@ -111,13 +114,13 @@ class Admin extends Component {
     newState.wineAgeability = wine.ageability
     newState.wineAlcohol = wine.alcohol
     newState.wineBody = wine.body
-    newState.wineCountry = wine.country 
+    newState.wineCountry = wine.country
     newState.wineDecant = wine.decant
     newState.wineGlassType = wine.glassType
     newState.winePairings = wine.pairings
     newState.winePrimaryFlavors = wine.primaryFlavors
     newState.winePronunciation = wine.pronunciation
-    newState.wineRegion = wine.region 
+    newState.wineRegion = wine.region
     newState.wineSummary = wine.summary
     newState.wineSweetness = wine.sweetness
     newState.wineTannin = wine.tannin
@@ -161,11 +164,12 @@ class Admin extends Component {
     console.log('logging out');
     API.logOut().then(response => {
       console.log(response.data);
+      this.props.history.push(`/`);
       this.setState({
         loggedIn: false,
         user: null,
       })
-      this.props.history.push(`/`);
+      // this.props.history.push(`/`);
     });
   };
 
@@ -281,19 +285,15 @@ class Admin extends Component {
 
   render() {
 
-
     return (
-
       <Container>
-
-
 
         <Userinfo
           useId={this.state.useId}
           usefirstName={this.state.usefirstName}
           uselastName={this.state.uselastName}
           userestaurantName={this.state.userestaurantName}
-          useEmail = {this.state.useEmail}
+          useEmail={this.state.useEmail}
           showMe3={this.state.showMe3}
           hideShow3={this.hideShow3}
           handleLogout={this.handleLogout}
@@ -320,22 +320,36 @@ class Admin extends Component {
 
         {/* MODAL ----------------------- */}
 
-        <div className="wineandemployeewrapper">
-          <div className="brandCol">
-            <div className="welcomebtnwrap">
-              <div>
-<div></div>
+        <div className="navBar">
 
-                <button
-                  onClick={() => this.hideShow3()}
-                  className="welcomebtn"
-                ><Header
-                    user={this.state.user} />
-                </button>
+          <Navbar
+            userId={this.state.user._id}
+            userFirstName={this.state.user.firstName}
+            userLastName={this.state.user.lastName}
+            userAdmin={this.state.user.isAdmin}
+            restaurantName={this.state.user.restaurantName}
+            handleLogout={this.handleLogout}
+            hideShow4={this.hideShow3}
+          >
 
-              </div>
+          </Navbar>
+          {/* <div className="welcomebtnwrap">  */}
+          {/* <div>
+            <div>
+              {this.state.restaurant}
             </div>
-          </div>
+
+            <button
+              onClick={() => this.hideShow3()}
+              className="welcomebtn"
+            ><Header
+                user={this.state.user} />
+            </button>
+
+          </div>  */}
+          {/* </div> */}
+        </div>
+        <div className="wineandemployeewrapper">
           <div className="wineCol">
             <div className="wineTitleWrap">
               <div className="wineTitleWrap1">

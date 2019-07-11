@@ -1,12 +1,11 @@
 import React, { Component } from "react";
 import SavedWine from "../components/SavedWine";
 import API from "../utils/API";
+import Navbar from "../components/Navbar"
 import Header2 from "../components/Header2";
 import Empinfo from "../components/Empinfo";
 import { Container } from "../components/Grid";
-// import questions from "../questions.json";
-// // importing the wine template for testing purposes 
-// import wineData from "../franciacorta.json"
+// importing the wine template for testing purposes 
 import ScoreSummary from "../components/Scores"
 import { List } from "../components/List";
 // import { Link } from "react-router-dom";
@@ -80,11 +79,6 @@ class EmployeePage extends Component {
     // console.log(newState.newScores)
   };
 
-
-  componentDidMount() {
-    this.getUser()
-  }
-
   getUser = () => {
 
 
@@ -108,6 +102,10 @@ class EmployeePage extends Component {
         this.props.history.push(`/`);
       }
     });
+  }
+
+  componentDidMount() {
+    this.getUser()
   }
 
   getSavedWine = () => {
@@ -146,12 +144,13 @@ class EmployeePage extends Component {
 
     console.log('logging out');
     API.logOut().then(response => {
+      this.props.history.push(`/`);
       console.log(response.data.msg);
       this.setState({
         loggedIn: false,
         user: null,
       });
-      this.props.history.push(`/`);
+      // this.props.history.push(`/`);
       console.log(this.state);
     });
   }
@@ -198,41 +197,28 @@ class EmployeePage extends Component {
     this.setState(newState);
   }
 
-
-  // showScore = winename => {
-  //   const newState = { ...this.state }
-
-
-  //   const score = this.state.scoreCollection.find(score => score.wine === winename);
-
-  //   if (newState.newScore === null) {
-  //     console.log("you lose");
-  //     newState.testmessage = "take Exam"
-  //     newState.newScore = "0"
-  //   }
-  //   else if (newState.user.firstName) {
-  //     newState.testmessage = ""
-  //     newState.winewiththisscore = winename
-  //     newState.scoreId = score._id
-  //     newState.newScore = score.score
-  //   }
-
-  //   this.setState(newState);
-  //   console.log('blablabla')
-  //   console.log(newState.newScore)
-  // }
-  // ----------
-
   render() {
     return (
 
       <Container>
+        <div className="doesThisHelp">
+        <Navbar
+        userId={this.state.user._id}
+                   userFirstName={this.state.user.firstName}
+                    userLastName={this.state.user.lastName}
+                    userAdmin={this.state.user.isAdmin}
+                    restaurantName={this.state.user.restaurantName}
+                    handleLogout={this.handleLogout}
+                    hideShow4={this.hideShow4}
+        ></Navbar>
+        </div>
 
 
 
         <div className="emppagemainwrap">
           <Empinfo
-            useId={this.state.useId}
+          user={this.state.user}
+            userId={this.state.useId}
             useEmail={this.state.empuseEmail}
             usefirstName={this.state.empUserFirstName}
             uselastName={this.state.empUserLastName}
@@ -256,7 +242,8 @@ class EmployeePage extends Component {
 
 
           <div className="employeepagewrapper">
-
+            <div className="navTest">
+            </div>
             <div className="emppagecol">
               <div className="empwelcomebtnwrap">
                 <button
